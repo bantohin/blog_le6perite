@@ -7,7 +7,7 @@ namespace Blog_le6perite.Classes
 {
     public class Utils
     {
-        public static string CutText(string text, int maxLength = 200)
+        public static string CutText(string text, int maxLength = 400)
         {
             if (text == null || text.Length <= maxLength)
                 return text;
