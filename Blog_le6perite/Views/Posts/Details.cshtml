@@ -4,39 +4,65 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Full content</h2>
 
 <div>
-    <h4>Post</h4>
+    <h4>Article</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <section class="row">
+        <article class="post col-md-12">
+            <h2 class="title">@Html.Raw(Model.Title)</h2>
+            <div class="about">
+                Posted on <i>@Model.Date</i>
+                @if (Model.Author != null)
+                {
+                    @: by <i>@Model.Author.FullName</i>
+                }
+            </div>
+            <div class="body">@Html.Raw(Model.Body)</div>
+        </article>
+    </section>
+
+    <br />
+
+    <div style="text-align: center">
+        <div><i>Leave your comment</i></div>
+        <br />
+        <form>
+            <textarea style="width: 100%" rows="3"></textarea>
+            <br />
+            <input style="margin-top: 10px" type="submit" value="Comment" />
+        </form>
+    </div>
+
+    @*<dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
-
+    
         <dd>
-            @Html.DisplayFor(model => model.Title)
+            @Html.Raw(Model.Title)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Body)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Body)
-        </dd>
-
+    
         <dt>
             @Html.DisplayNameFor(model => model.Date)
         </dt>
-
+    
         <dd>
             @Html.DisplayFor(model => model.Date)
         </dd>
-
-    </dl>
+    
+        <dt>
+            @Html.DisplayNameFor(model => model.Body)
+        </dt>
+    
+        <dd>
+            @Html.Raw(Model.Body)
+        </dd>      
+    </dl>*@
 </div>
+<hr />
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to posts", "Index")
 </p>

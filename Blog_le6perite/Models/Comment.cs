@@ -11,8 +11,9 @@ namespace Blog_le6perite.Models
         public Comment()
         {
             this.Date = DateTime.Now;
-        }
+        }       
 
+        [Key]
         public int Id { get; set; }
 
         [Required]
