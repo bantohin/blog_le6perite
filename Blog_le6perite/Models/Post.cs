@@ -8,6 +8,12 @@ namespace Blog_le6perite.Models
 {
     public class Post
     {
+        public Post()
+        {
+            this.Date = DateTime.Now;
+            this.Comments = new HashSet<Comment>();
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -23,6 +29,8 @@ namespace Blog_le6perite.Models
 
         public ApplicationUser Author { get; set; }
 
-        //TODO: Tags , Comments
+        public virtual ICollection<Comment> Comments { get; set; }
+
+        //TODO: Tags
     }
 }

@@ -7,7 +7,11 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace Blog_le6perite.Models
 {    
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
+    {        
+
+        public IDbSet<Comment> Comments { get; set; }
+        public DbSet<Post> Posts { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -18,7 +22,5 @@ namespace Blog_le6perite.Models
         {
             return new ApplicationDbContext();
         }
-
-        public System.Data.Entity.DbSet<Blog_le6perite.Models.Post> Posts { get; set; }
     }
 }

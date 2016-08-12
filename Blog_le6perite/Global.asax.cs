@@ -15,8 +15,7 @@ namespace Blog_le6perite
         protected void Application_Start()
         {
             Database.SetInitializer(
-                new MigrateDatabaseToLatestVersion<ApplicationDbContext,
-                Migrations.Configuration>());
+                new MigrateDatabaseToLatestVersion<ApplicationDbContext, Migrations.Configuration>());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
