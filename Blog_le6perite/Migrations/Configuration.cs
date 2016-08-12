@@ -1,4 +1,4 @@
-namespace MVCBlog.Migrations
+namespace Blog_le6perite.Migrations
 {
     using Blog_le6perite.Models;
     using Microsoft.AspNet.Identity;

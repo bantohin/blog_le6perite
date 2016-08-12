@@ -22,3 +22,13 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.post>h2, .post>div {
+    background: #d1bdbd;
+    padding: 10px;
+    margin: 0;    
+}
+
+.post>h2 {
+    margin-top: 15px;
+}
