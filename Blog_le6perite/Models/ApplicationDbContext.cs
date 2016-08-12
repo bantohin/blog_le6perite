@@ -18,5 +18,7 @@ namespace Blog_le6perite.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Blog_le6perite.Models.Post> Posts { get; set; }
     }
 }
