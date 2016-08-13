@@ -5,10 +5,18 @@
 
 @model List<Blog_le6perite.Models.Post>
 
+<aside class="row" id="sidebar">
+    <h3>Most recent posts:</h3>
+    @foreach (var post in ViewBag.SidebarPosts)
+    {
+        <div><a href="Posts/Details/@post.Id"> @post.Title</a></div>
+    }
+</aside>
+
 @foreach (var post in Model)
 {
     <section class="row">
-        <article class="post col-md-12">
+        <article class="post col-md-8">
             <h2 class="title">@post.Title</h2>
             <div class="about">
                 Posted on <i>@post.Date</i>
@@ -21,3 +29,4 @@
         </article>
     </section>
 }
+

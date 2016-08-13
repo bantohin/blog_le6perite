@@ -32,3 +32,14 @@ textarea {
 .post>h2 {
     margin-top: 15px;
 }
+
+#sidebar {
+    float: right;
+    margin-left: 10px;
+    background: #d1bdbd;
+    margin-top: 15px;
+}
+
+#sidebar>h3 {
+    margin-top: 0px;
+}
