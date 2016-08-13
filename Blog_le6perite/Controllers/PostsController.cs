@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Blog_le6perite.Models;
+using Blog_le6perite.Extensions;
 
 namespace Blog_le6perite.Controllers
 {
