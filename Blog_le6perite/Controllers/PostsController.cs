@@ -18,7 +18,8 @@ namespace Blog_le6perite.Controllers
         // GET: Posts
         public ActionResult Index()
         {
-            return View(db.Posts.Include(p => p.Author).ToList());
+            var post = db.Posts.Include(p => p.Author).OrderByDescending(p => p.Date).ToList();
+            return View(post);
         }
 
         // GET: Posts/Details/5
@@ -56,6 +57,7 @@ namespace Blog_le6perite.Controllers
                 post.Author = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
                 db.Posts.Add(post);
                 db.SaveChanges();
+                this.AddNotification("Post Created", NotificationType.SUCCESS);
                 return RedirectToAction("Index");
             }
 
@@ -92,6 +94,7 @@ namespace Blog_le6perite.Controllers
             {
                 db.Entry(post).State = EntityState.Modified;
                 db.SaveChanges();
+                this.AddNotification("Post edited", NotificationType.SUCCESS);
                 return RedirectToAction("Index");
             }
             return View(post);
@@ -122,6 +125,7 @@ namespace Blog_le6perite.Controllers
             Post post = db.Posts.Find(id);
             db.Posts.Remove(post);
             db.SaveChanges();
+            this.AddNotification("Post deleted", NotificationType.SUCCESS);
             return RedirectToAction("Index");
         }
 
