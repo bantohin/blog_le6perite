@@ -62,14 +62,15 @@
     </div>
 }
 
+
 <div>
     @Html.ActionLink("Back to Posts", "Index")
 </div>
 
 @*TODO:Button to Details of the same post*@
-@*<div>
-    @Html.ActionLink("Back to Posts", "Details/")
-</div>*@
+<div>
+    @Html.ActionLink("Details", "Details", new { id = Model.Id })
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
