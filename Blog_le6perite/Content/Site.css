@@ -47,3 +47,6 @@ textarea {
 .alert{
     margin-top: 10px;
 }
+.alert:hover{
+    opacity:0;
+}

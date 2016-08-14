@@ -66,15 +66,16 @@ namespace Blog_le6perite.Controllers
         }
 
         // GET: Posts/Edit/5
-        [Authorize(Roles = "Administrators")]
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
-            if (post == null)
+            Post post = db.Posts.Include(p => p.Author).SingleOrDefault(p => p.Id == id);
+
+            if (post == null || (post.Author.UserName != User.Identity.Name && !User.IsInRole("Administrators")))
             {
                 return HttpNotFound();
             }
@@ -86,7 +87,7 @@ namespace Blog_le6perite.Controllers
         // POST: Posts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Administrators")]
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Body,Date,Author_Id")] Post post)
@@ -102,15 +103,17 @@ namespace Blog_le6perite.Controllers
         }
 
         // GET: Posts/Delete/5
-        [Authorize(Roles ="Administrators")]
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
-            if (post == null)
+
+            Post post = db.Posts.Include(p => p.Author).SingleOrDefault(p => p.Id == id);
+
+            if (post == null || (post.Author.UserName != User.Identity.Name && !User.IsInRole("Administrators")))
             {
                 return HttpNotFound();
             }
@@ -118,7 +121,7 @@ namespace Blog_le6perite.Controllers
         }
 
         // POST: Posts/Delete/5
-        [Authorize(Roles = "Administrators")]
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
