@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Blog_le6perite.Models;
+using Blog_le6perite.Extensions;
 
 namespace Blog_le6perite.Controllers
 {
@@ -127,6 +128,7 @@ namespace Blog_le6perite.Controllers
                 };
                 await UserManager.SmsService.SendAsync(message);
             }
+            this.AddNotification("Verify your phone number", NotificationType.INFO);
             return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
         }
 
@@ -142,6 +144,7 @@ namespace Blog_le6perite.Controllers
             {
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
             }
+            this.AddNotification("Two Factor Authentication was successfully enabled!", NotificationType.INFO);
             return RedirectToAction("Index", "Manage");
         }
 
@@ -157,6 +160,7 @@ namespace Blog_le6perite.Controllers
             {
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
             }
+            this.AddNotification("Two Factor Authentication was successfully disabled!", NotificationType.INFO);
             return RedirectToAction("Index", "Manage");
         }
 
@@ -187,6 +191,7 @@ namespace Blog_le6perite.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
+
                 return RedirectToAction("Index", new { Message = ManageMessageId.AddPhoneSuccess });
             }
             // If we got this far, something failed, redisplay form
@@ -210,6 +215,7 @@ namespace Blog_le6perite.Controllers
             {
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
             }
+            this.AddNotification("Your phone number was successfully removed!", NotificationType.INFO);
             return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
         }
 
@@ -238,7 +244,8 @@ namespace Blog_le6perite.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                this.AddNotification("Your password has been changed!", NotificationType.INFO);
+                return RedirectToAction("Index");
             }
             AddErrors(result);
             return View(model);
@@ -267,7 +274,8 @@ namespace Blog_le6perite.Controllers
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     }
-                    return RedirectToAction("Index", new { Message = ManageMessageId.SetPasswordSuccess });
+                    this.AddNotification("Your password has been set", NotificationType.INFO);
+                    return RedirectToAction("Index");
                 }
                 AddErrors(result);
             }

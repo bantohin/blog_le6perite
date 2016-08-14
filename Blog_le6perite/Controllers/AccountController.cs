@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Blog_le6perite.Models;
+using Blog_le6perite.Extensions;
 
 namespace Blog_le6perite.Controllers
 {
@@ -79,6 +80,7 @@ namespace Blog_le6perite.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    this.AddNotification("Successful login", NotificationType.INFO);
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -87,6 +89,7 @@ namespace Blog_le6perite.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
+                    this.AddNotification("Invalid login attempt.", NotificationType.ERROR);
                     return View(model);
             }
         }
@@ -124,6 +127,7 @@ namespace Blog_le6perite.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    this.AddNotification("Successful verification", NotificationType.INFO);
                     return RedirectToLocal(model.ReturnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -162,13 +166,13 @@ namespace Blog_le6perite.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                    this.AddNotification("You registered successfully", NotificationType.SUCCESS);
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
@@ -258,11 +262,13 @@ namespace Blog_le6perite.Controllers
             if (user == null)
             {
                 // Don't reveal that the user does not exist
+                this.AddNotification("Oops! Something went wrong", NotificationType.ERROR);
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
             var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
             if (result.Succeeded)
             {
+                this.AddNotification("Your password has been changed!", NotificationType.INFO);
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
             AddErrors(result);
@@ -331,6 +337,7 @@ namespace Blog_le6perite.Controllers
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
+                this.AddNotification("An error occured while trying to log in!", NotificationType.ERROR);
                 return RedirectToAction("Login");
             }
 
@@ -362,6 +369,7 @@ namespace Blog_le6perite.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+                this.AddNotification("Successful login!", NotificationType.INFO);
                 return RedirectToAction("Index", "Manage");
             }
 
@@ -398,6 +406,7 @@ namespace Blog_le6perite.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            this.AddNotification("You logged out!", NotificationType.INFO);
             return RedirectToAction("Index", "Home");
         }
 

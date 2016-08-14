@@ -58,7 +58,7 @@ namespace Blog_le6perite.Controllers
                 post.Author = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
                 db.Posts.Add(post);
                 db.SaveChanges();
-                this.AddNotification("Post Created", NotificationType.SUCCESS);
+                this.AddNotification("Post created!", NotificationType.SUCCESS);
                 return RedirectToAction("Index");
             }
 
@@ -95,7 +95,7 @@ namespace Blog_le6perite.Controllers
             {
                 db.Entry(post).State = EntityState.Modified;
                 db.SaveChanges();
-                this.AddNotification("Post edited", NotificationType.SUCCESS);
+                this.AddNotification("Post edited", NotificationType.INFO);
                 return RedirectToAction("Index");
             }
             return View(post);
