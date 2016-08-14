@@ -5,7 +5,9 @@
 
 @model List<Blog_le6perite.Models.Post>
 
-<aside class="row" id="sidebar">
+<aside class="row" id="sidebar" style="text-align: center">
+    <h3>Current Time:</h3>
+    <embed src=http://flash-clocks.com/free-flash-clocks-blog-topics/free-flash-clock-161.swf width=200 height=100 wmode=transparent type=application/x-shockwave-flash>
     <h3>Most recent posts:</h3>
     @foreach (var post in ViewBag.SidebarPosts)
     {

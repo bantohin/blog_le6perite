@@ -31,9 +31,26 @@
         <form>
             <textarea style="width: 100%" rows="3"></textarea>
             <br />
-            <input style="margin-top: 10px" type="submit" value="Comment" />
+            <input style="margin-top: 10px" type="submit" value="Comment" onclick="createComment()"/>
         </form>
     </div>
+
+    @*<script>
+        $(function () {
+            $("button").click(function () {
+                var car = { Make: 'Audi', Model: 'A4 Avant', Colour: 'Black', Registered: 2013 };
+                $.ajax({
+                    type: "POST",
+                    url: "/Receiver",
+                    data: car,
+                    datatype: "html",
+                    success: function (data) {
+                        $('#result').html(data);
+                    }
+                });
+            });
+        });
+    </script>*@
 
     @*<dl class="dl-horizontal">
         <dt>
