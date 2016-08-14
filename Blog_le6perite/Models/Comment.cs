@@ -5,9 +5,11 @@ using System.Linq;
 using System.Web;
 
 namespace Blog_le6perite.Models
-{
+{    
     public class Comment
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         public Comment()
         {
             this.Date = DateTime.Now;

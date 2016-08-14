@@ -77,7 +77,6 @@ D:\Software Technologies May 2016\Проект\blog_le6perite\blog_le6perite\Blo
 D:\Software Technologies May 2016\Проект\blog_le6perite\blog_le6perite\Blog_le6perite\bin\Microsoft.Owin.Security.Google.xml
 D:\Software Technologies May 2016\Проект\blog_le6perite\blog_le6perite\Blog_le6perite\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Software Technologies May 2016\Проект\blog_le6perite\blog_le6perite\Blog_le6perite\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\Software Technologies May 2016\Проект\blog_le6perite\blog_le6perite\Blog_le6perite\obj\Debug\Blog_le6perite.csprojResolveAssemblyReference.cache
 D:\Software Technologies May 2016\Проект\blog_le6perite\blog_le6perite\Blog_le6perite\obj\Debug\Blog_le6perite.dll
 D:\Software Technologies May 2016\Проект\blog_le6perite\blog_le6perite\Blog_le6perite\obj\Debug\Blog_le6perite.pdb
 C:\Users\Daniel\Documents\GitHub\blog_le6perite\Blog_le6perite\bin\ApplicationInsights.config

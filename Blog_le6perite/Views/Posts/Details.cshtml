@@ -6,10 +6,16 @@
     if (IsPost)
     {
         commentText = Request.Form["commentText"];
-        Console.WriteLine(commentText);
-        //private ApplicationDbContext db = new ApplicationDbContext();
-        //var insertCommand = "INSERT INTO Movies (Title, Genre, Year) VALUES(@0, @1, @2)";
-        //db.Execute(insertCommand, commentText);
+        ApplicationDbContext db = new ApplicationDbContext();
+        var comment = new Comment()
+        {
+            Text = commentText,
+            Author = Model.Author,
+            AuthorId = Model.Author_Id,
+            PostId = Model.Id
+        };
+        db.Comments.Add(comment);
+        db.SaveChanges();         
     }
 }
 
@@ -39,7 +45,7 @@
 
     <br />
 
-    <div>
+    <div style="text-align: center">
         <div><i>Leave your comment</i></div>
         <form method="post">
             <fieldset>                
@@ -52,61 +58,7 @@
             </fieldset>
         </form>    
     </div>
-
-
-    @*<div style="text-align: center">
-        <div><i>Leave your comment</i></div>
-        <br />
-        <form>
-            <textarea style="width: 100%" rows="3"></textarea>
-            <br />
-            <input style="margin-top: 10px" type="submit" value="Comment" onclick="createComment()"/>
-        </form>
-    </div>*@
-    
-
-    @*<script>
-        $(function () {
-            $("button").click(function () {
-                var car = { Make: 'Audi', Model: 'A4 Avant', Colour: 'Black', Registered: 2013 };
-                $.ajax({
-                    type: "POST",
-                    url: "/Receiver",
-                    data: car,
-                    datatype: "html",
-                    success: function (data) {
-                        $('#result').html(data);
-                    }
-                });
-            });
-        });
-    </script>*@
-
-    @*<dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-    
-        <dd>
-            @Html.Raw(Model.Title)
-        </dd>
-    
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-    
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-    
-        <dt>
-            @Html.DisplayNameFor(model => model.Body)
-        </dt>
-    
-        <dd>
-            @Html.Raw(Model.Body)
-        </dd>      
-    </dl>*@
+           
 </div>
 <hr />
 <p>

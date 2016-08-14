@@ -12,7 +12,7 @@ namespace Blog_le6perite.Models
         public Post()
         {
             this.Date = DateTime.Now;
-            this.Comments = new HashSet<Comment>();
+            this.Comments = new HashSet<Comment>();            
         }
 
         [Key]
@@ -35,7 +35,7 @@ namespace Blog_le6perite.Models
         public string Author_Id { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
-
+        
         //TODO: Tags
     }
 }
