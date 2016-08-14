@@ -80,6 +80,9 @@
 </div>
 <hr />
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @if (User.IsInRole("Administrators"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) @: |
+    }
     @Html.ActionLink("Back to posts", "Index")
 </p>
