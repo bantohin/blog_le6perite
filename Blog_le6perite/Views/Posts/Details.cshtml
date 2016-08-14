@@ -1,7 +1,7 @@
 ﻿@model Blog_le6perite.Models.Post
 @using Blog_le6perite.Models
 
-@{ 
+@{     
     var commentText = "";
     if (IsPost)
     {
@@ -10,12 +10,12 @@
         var comment = new Comment()
         {
             Text = commentText,
-            Author = Model.Author,
-            AuthorId = Model.Author_Id,
+            Author = Page.CurrentUser,
+            //AuthorId = Membership.GetUser(User.Identity.Name).ProviderUserKey.ToString(),/*Model.Author_Id*/
             PostId = Model.Id
         };
         db.Comments.Add(comment);
-        db.SaveChanges();         
+        db.SaveChanges();
     }
 }
 
@@ -58,7 +58,7 @@
             </fieldset>
         </form>    
     </div>
-           
+               
 </div>
 <hr />
 <p>

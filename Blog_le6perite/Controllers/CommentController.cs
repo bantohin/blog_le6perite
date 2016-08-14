@@ -12,8 +12,7 @@ namespace Blog_le6perite.Controllers
 {
     public class CommentController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
+        private ApplicationDbContext db = new ApplicationDbContext();        
         //// GET: Posts
         //public ActionResult Index()
         //{

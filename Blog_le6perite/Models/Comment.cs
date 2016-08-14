@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace Blog_le6perite.Models
         public Comment()
         {
             this.Date = DateTime.Now;
+            //Try
+            this.AuthorId = HttpContext.Current.User.Identity.GetUserId();
         }
 
         [Key]
