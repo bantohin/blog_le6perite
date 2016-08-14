@@ -10,8 +10,7 @@
         var comment = new Comment()
         {
             Text = commentText,
-            Author = Page.CurrentUser,
-            //AuthorId = Membership.GetUser(User.Identity.Name).ProviderUserKey.ToString(),/*Model.Author_Id*/
+            Author = Page.CurrentUser,           
             PostId = Model.Id
         };
         db.Comments.Add(comment);
