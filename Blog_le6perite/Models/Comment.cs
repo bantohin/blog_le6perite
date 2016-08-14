@@ -11,7 +11,7 @@ namespace Blog_le6perite.Models
         public Comment()
         {
             this.Date = DateTime.Now;
-        }       
+        }
 
         [Key]
         public int Id { get; set; }
@@ -21,13 +21,14 @@ namespace Blog_le6perite.Models
 
         [Required]
         public DateTime Date { get; set; }
-        
+
         public string AuthorId { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
-        
-        public int PostId { get; set;}
+
+        public int PostId { get; set; }
 
         public virtual Post Post { get; set; }
+
     }
 }

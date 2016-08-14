@@ -1,4 +1,18 @@
 ﻿@model Blog_le6perite.Models.Post
+@using Blog_le6perite.Models
+
+@{ 
+    var commentText = "";
+    if (IsPost)
+    {
+        commentText = Request.Form["commentText"];
+        Console.WriteLine(commentText);
+        //private ApplicationDbContext db = new ApplicationDbContext();
+        //var insertCommand = "INSERT INTO Movies (Title, Genre, Year) VALUES(@0, @1, @2)";
+        //db.Execute(insertCommand, commentText);
+    }
+}
+
 
 @{
     ViewBag.Title = "Details";
@@ -25,7 +39,22 @@
 
     <br />
 
-    <div style="text-align: center">
+    <div>
+        <div><i>Leave your comment</i></div>
+        <form method="post">
+            <fieldset>                
+                <p>                    
+                    <input type="text" name="commentText" value="@Request.Form["commentText"]" />
+                </p>
+                
+                <p><input type="submit" name="buttonSubmit" value="Add comment" /></p>
+
+            </fieldset>
+        </form>    
+    </div>
+
+
+    @*<div style="text-align: center">
         <div><i>Leave your comment</i></div>
         <br />
         <form>
@@ -33,7 +62,8 @@
             <br />
             <input style="margin-top: 10px" type="submit" value="Comment" onclick="createComment()"/>
         </form>
-    </div>
+    </div>*@
+    
 
     @*<script>
         $(function () {
