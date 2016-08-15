@@ -1,11 +1,18 @@
 @using Blog_le6perite.Extensions
-
+<script src="~/Scripts/jquery-1.10.2.js" type="text/javascript"></script>
 @{
     var errorList = Html.GetNotifications(NotificationType.ERROR);
     var warningList = Html.GetNotifications(NotificationType.WARNING);
     var successList = Html.GetNotifications(NotificationType.SUCCESS);
     var infoList = Html.GetNotifications(NotificationType.INFO);
 }
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".alert").click(function () {
+            $(".alert").fadeOut();
+        });
+    });
+</script>
 <!-- display errors -->
 @if (errorList != null)
 {
