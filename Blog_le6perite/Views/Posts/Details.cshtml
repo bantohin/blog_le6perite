@@ -3,21 +3,27 @@
 
 @{     
     var commentText = "";
+    ApplicationDbContext db = new ApplicationDbContext();
     if (IsPost)
     {
         commentText = Request.Form["commentText"];
-        ApplicationDbContext db = new ApplicationDbContext();
+
         var comment = new Comment()
         {
             Text = commentText,
-            Author = Page.CurrentUser,           
+            Author = Page.CurrentUser,
             PostId = Model.Id
         };
         db.Comments.Add(comment);
         db.SaveChanges();
     }
-}
+    List<Comment> comments = db.Comments
+        .Select(c => c)
+        .Where(c => c.PostId == Model.Id)
+        .ToList();
 
+    ViewBag.Comments = comments;
+}
 
 @{
     ViewBag.Title = "Details";
@@ -53,9 +59,31 @@
                 </p>
                 
                 <p><input type="submit" name="buttonSubmit" value="Add comment" /></p>
-
             </fieldset>
         </form>    
+    </div>
+    <br />
+
+    <h3>Comments</h3> <br>
+    <div>
+        @foreach (var comment in ViewBag.Comments)
+        {
+          <section class="row">
+              <article class="post col-md-12">                  
+                  <div class="about">
+                      Posted on <i>@comment.Date</i>
+                      @if (comment.Author != null)
+                      {
+                          @: by <i>@comment.Author.FullName</i>
+                      }else
+                      {
+                          @: by <i>anonymous</i>
+                      }
+                      </div>
+                  <div class="body">@comment.Text</div>
+              </article>
+          </section>
+        }
     </div>
                
 </div>
