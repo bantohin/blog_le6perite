@@ -35,7 +35,8 @@ namespace Blog_le6perite.Models
         public string Author_Id { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
-        
+
+        public int Hits { get; set; }
         //TODO: Tags
     }
 }

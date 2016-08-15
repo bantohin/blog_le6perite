@@ -35,6 +35,11 @@ namespace Blog_le6perite.Controllers
             {
                 return HttpNotFound();
             }
+
+            var hits = post.Hits;
+            hits += 1;
+            post.Hits = hits;
+            db.SaveChanges();
             return View(post);
         }
 
