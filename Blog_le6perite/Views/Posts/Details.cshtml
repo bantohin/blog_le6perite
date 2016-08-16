@@ -23,7 +23,10 @@
         .ToList();
 
     ViewBag.Comments = comments;
+
 }
+
+
 
 @{
     ViewBag.Title = "Details";
@@ -55,14 +58,14 @@
         <form method="post">
             <fieldset>                
                 <p>                    
-                    <input type="text" name="commentText" value="@Request.Form["commentText"]" />
+                    <input type="text" id="1" name="commentText" @*value="@Request.Form["commentText"]"*@ />
                 </p>
                 
                 <p><input type="submit" name="buttonSubmit" value="Add comment" /></p>
             </fieldset>
         </form>    
     </div>
-    <br />
+    <br />  
 
     <h3>Comments</h3> <br>
     <div>

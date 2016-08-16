@@ -13,8 +13,7 @@ namespace Blog_le6perite.Models
 
         public Comment()
         {
-            this.Date = DateTime.Now;
-            //Try
+            this.Date = DateTime.Now;            
             this.AuthorId = HttpContext.Current.User.Identity.GetUserId();
         }
 
