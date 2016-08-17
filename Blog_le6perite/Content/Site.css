@@ -47,3 +47,15 @@ textarea {
 .alert{
     margin-top: 10px;
 }
+.hyperlink {
+color: #000000;
+}
+.hyperlink:link {
+color: #000000;
+}
+.hyperlink:visited {
+color: #000000;
+}
+.hyperlink:hover {
+color: #ffffff;
+}
