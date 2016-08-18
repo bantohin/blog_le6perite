@@ -1,0 +1,31 @@
+﻿@model Blog_le6perite.Models.Post
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "My Posts";
+}
+
+<h2>My posts</h2>
+@if(ViewBag.MyPosts == null)
+{
+    <span>You don't have any posts. <a href="../Posts/Create">Create your first one!</a></span>
+}
+else
+{
+    <dl>
+        <dt>Posts: </dt>
+        @foreach (var post in ViewBag.MyPosts)
+        {
+            <dd><a href="../Posts/Details/@post.Id" class="hyperlink"> @post.Title</a></dd>
+        }
+    </dl>
+}
+
+@*@foreach (var post in ViewBag.MyPosts)
+{
+    <p>@post.Title</p>
+}*@
+
