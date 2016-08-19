@@ -35,5 +35,7 @@ namespace Blog_le6perite.Models
 
         public virtual Post Post { get; set; }
 
+        public string AuthorName { get; set; }
+
     }
 }

@@ -3,19 +3,35 @@
 
 @{     
     var commentText = "";
+    var commentAuthor = "";
     ApplicationDbContext db = new ApplicationDbContext();
     if (IsPost)
     {
         commentText = Request.Form["commentText"];
-
-        var comment = new Comment()
+        commentAuthor = Request.Form["commentAuthor"];
+        if (User.Identity.IsAuthenticated)
         {
-            Text = commentText,
-            Author = db.Users.Select(p => p).FirstOrDefault(p => p.UserName == HttpContext.Current.User.Identity.Name),
-            PostId = Model.Id
-        };
-        db.Comments.Add(comment);
-        db.SaveChanges();
+            var comment = new Comment()
+            {
+                Text = commentText,
+                Author = db.Users.Select(p => p).FirstOrDefault(p => p.UserName == HttpContext.Current.User.Identity.Name),
+                PostId = Model.Id
+            };
+            db.Comments.Add(comment);
+            db.SaveChanges();
+        }
+        else
+        {
+            var comment = new Comment()
+            {
+                Text = commentText,
+                AuthorName = commentAuthor,
+                PostId = Model.Id
+            };
+            db.Comments.Add(comment);
+            db.SaveChanges();
+        }
+
     }
     List<Comment> comments = db.Comments
         .Select(c => c)
@@ -47,25 +63,30 @@
             <div class="body">@Html.Raw(Model.Body)</div>
         </article>
     </section>
-
-    <br />
+    <h4 style="margin-top: 20px; margin-bottom: 20px">Leave your comment</h4>
     <div style="text-align: left">
-        <div><i>Leave your comment</i></div>
         <form method="post">
             <fieldset>
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    @:Name:
+                    <p>
+                        <input class="form-control" type="text" id="2" name="commentAuthor"/>
+                    </p>
+                }
+                Comment:
                 <p>
                     <textarea rows="10" class="form-control" type="text" id="1" name="commentText" style="height: 100px"></textarea>
                 </p>
-
+                
                 <p>
                     <input type="submit" name="buttonSubmit" value="Add comment" class="btn btn-default" style="" />
                 </p>
             </fieldset>
         </form>
-    </div>
-    <br />   
-
-    <h3>Comments</h3> <br>
+    </div>  
+    <h3>Comments</h3>
+ <br>
     <div>
         @foreach (var comment in ViewBag.Comments)
         {
@@ -79,12 +100,12 @@
                       }
                       else
                       {
-                          @: by <i>anonymous</i>
+                          @: by <i>@comment.AuthorName</i>
                       }
                       </div>
                   <div class="body">@comment.Text <aside>@if (User.IsInRole("Administrators") || (comment.Author != null && User.Identity.Name == comment.Author.UserName))
                   {
-                    @Html.ActionLink("Delete", "../Comments/Delete", new { id = comment.Id }) @:|
+                    @Html.ActionLink("Delete this comment", "../Comments/Delete", new { id = comment.Id })
             }</aside></div>
               </article>
           </section>
