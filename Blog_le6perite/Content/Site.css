@@ -35,10 +35,12 @@ textarea {
 
 #sidebar {
     float: right;
-    margin-left: 10px;
     background: #d1bdbd;
-    margin-top: 15px;
     padding: 10px;
+    top: 65px;
+    bottom: 0;
+    right: 50px;
+    position:absolute;
 }
 
 #sidebar>h3 {
