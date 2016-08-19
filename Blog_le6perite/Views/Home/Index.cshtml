@@ -27,7 +27,7 @@
                     @: by <i>@post.Author.FullName</i>
                 }
             </div>
-            <div class="body">@Html.Raw(Utils.CutText(post.Body))</div>
+            <div class="body">@Html.Raw(Utils.CutText(post.Body)) @Html.ActionLink("Read more", $"Details/{post.Id}", "Posts")</div>
         </article>
     </section>
 }

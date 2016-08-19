@@ -11,7 +11,7 @@
         var comment = new Comment()
         {
             Text = commentText,
-            Author = Page.CurrentUser,
+            Author = db.Users.Select(p => p).FirstOrDefault(p => p.UserName == HttpContext.Current.User.Identity.Name),
             PostId = Model.Id
         };
         db.Comments.Add(comment);
@@ -76,12 +76,16 @@
                       @if (comment.Author != null)
                       {
                           @: by <i>@comment.Author.FullName</i>
-                      }else
+                      }
+                      else
                       {
                           @: by <i>anonymous</i>
                       }
                       </div>
-                  <div class="body">@comment.Text</div>
+                  <div class="body">@comment.Text <aside>@if (User.IsInRole("Administrators") || (comment.Author != null && User.Identity.Name == comment.Author.UserName))
+                  {
+                    @Html.ActionLink("Delete", "../Comments/Delete", new { id = comment.Id }) @:|
+            }</aside></div>
               </article>
           </section>
         }
