@@ -7,7 +7,7 @@
 @*Add CK Editor*@ 
 
 <h2>Create post</h2>
-
+<script src="~/CkEditor/ckeditor.js"></script>
 
 @using (Html.BeginForm()) 
 {
@@ -27,7 +27,12 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="Body">Content</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control", @rows= "10" } })
+                <textarea name="Body" id="Body" rows="30" style="height: 500px" cols="80">
+                    @*This is my textarea to be replaced with CKEditor.*@
+                </textarea>
+                <script>
+                CKEDITOR.replace( 'Body' );
+                </script>
                 @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
             </div>
         </div>
