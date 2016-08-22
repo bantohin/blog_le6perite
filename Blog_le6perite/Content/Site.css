@@ -24,9 +24,10 @@ textarea {
 }
 
 .post>h2, .post>div {
-    background: #d1bdbd;
+    background: #542733;
     padding: 10px;
     margin: 0;    
+    color: #F7EAC8;
 }
 
 .post>h2 {
@@ -35,7 +36,7 @@ textarea {
 
 #sidebar {
     float: right;
-    background: #d1bdbd;
+    background: #542733;
     padding: 10px;
     top: 65px;
     bottom: 0;
@@ -45,19 +46,39 @@ textarea {
 
 #sidebar>h3 {
     margin-top: 0px;
+    margin-bottom: 5px;
+    color: #F7EAC8;
 }
+
 .alert{
     margin-top: 10px;
 }
+
 .hyperlink {
-color: #000000;
+color: #F7EAC8;
 }
+
 .hyperlink:link {
-color: #000000;
+color: #F7EAC8;
 }
+
 .hyperlink:visited {
-color: #000000;
+color: #F7EAC8;
 }
+
 .hyperlink:hover {
-color: #ffffff;
+color: #4287A8;
+}
+
+.post{
+    padding-bottom: 15px;
+    background-color:#542733;
+}
+
+#clock{
+    margin-bottom: 10px;
+    margin-top: -5px;
+}
+.footer{
+    color: #542733;
 }

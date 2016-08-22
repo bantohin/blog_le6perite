@@ -7,28 +7,31 @@
 
 <div class="row" id="sidebar" style="text-align: center">
     <h3>Current Time:</h3>
-    <embed src=http://flash-clocks.com/free-flash-clocks-blog-topics/free-flash-clock-161.swf width=200 height=100 wmode=transparent type=application/x-shockwave-flash>
+    @*<embed style="background-color: #542733" src=http://flash-clocks.com/free-flash-clocks-blog-topics/free-flash-clock-161.swf width=200 height=100 wmode=transparent type=application/x-shockwave-flash>*@
+    <iframe src="http://free.timeanddate.com/clock/i5c7ud5n/n3443/fn6/fs16/fcf7eac8/tct/pct/ftb/pa8/tt0/tw1/th1/ta1/tb4" frameborder="0" width="213" height="56" allowTransparency="true" id="clock"></iframe>
+
     <h3>Most recent posts:</h3>
     @foreach (var post in ViewBag.SidebarPosts)
     {
         <div><a href="Posts/Details/@post.Id" class="hyperlink"> @post.Title</a></div>
     }
 </div>
-
-@foreach (var post in Model)
-{
-    <section class="row">
-        <article class="post col-md-8">
-            <h2 class="title"><a href="/Posts/Details/@post.Id" class="hyperlink">@post.Title</a></h2>
-            <div class="about">
-                Posted on <i>@post.Date</i>
-                @if (post.Author!=null)
-                {
-                    @: by <i>@post.Author.FullName</i>
+<div id="articles" style="margin-top:15px;">
+    @foreach (var post in Model)
+    {
+        <section class="row">
+            <article class="post col-md-8">
+                <h2 class="title"><a href="/Posts/Details/@post.Id" class="hyperlink">@post.Title</a></h2>
+                <div class="about">
+                    Posted on <i>@post.Date</i>
+                    @if (post.Author != null)
+                    {
+                        @: by <i>@post.Author.FullName</i>
                 }
-            </div>
-            <div class="body">@Html.Raw(Utils.CutText(post.Body)) @Html.ActionLink("Read more", $"Details/{post.Id}", "Posts")</div>
-        </article>
-    </section>
-}
+                </div>
+                <div class="body">@Html.Raw(Utils.CutText(post.Body)) @Html.ActionLink("Read more", $"Details/{post.Id}", "Posts")</div>
+            </article>
+        </section>
+    }
+</div>
 
