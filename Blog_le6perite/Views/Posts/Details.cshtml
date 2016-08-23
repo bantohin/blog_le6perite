@@ -36,6 +36,7 @@
     List<Comment> comments = db.Comments
         .Select(c => c)
         .Where(c => c.PostId == Model.Id)
+        .OrderByDescending(c => c.Date)
         .ToList();
 
     ViewBag.Comments = comments;
@@ -90,6 +91,7 @@
     <div>
         @foreach (var comment in ViewBag.Comments)
         {
+          <hr id="commentHr"/>
           <section class="row">
               <article class="post col-md-12">                  
                   <div class="about">
@@ -100,7 +102,15 @@
                       }
                       else
                       {
-                          @: by <i>@comment.AuthorName</i>
+                          if (comment.AuthorName == "")
+                          {
+                              @: by <i>anonymous</i>
+                          }
+                          else
+                          {
+                            @: by <i>@comment.AuthorName</i>
+                          }
+                          
                       }
                       </div>
                   <div class="body">@comment.Text <aside>@if (User.IsInRole("Administrators") || (comment.Author != null && User.Identity.Name == comment.Author.UserName))
@@ -109,6 +119,7 @@
             }</aside></div>
               </article>
           </section>
+          
         }
     </div>      
 </div>

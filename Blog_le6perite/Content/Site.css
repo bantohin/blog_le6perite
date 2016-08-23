@@ -81,4 +81,14 @@ color: #4287A8;
 }
 .footer{
     color: #542733;
+    background-color: #542733;
+}
+
+#commentHr{
+    border-top: 1px solid #F7EAC8;
+    margin: 0;
+}
+
+#actions > a{
+    font-weight: bold;
 }

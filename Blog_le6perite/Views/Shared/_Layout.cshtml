@@ -20,7 +20,7 @@
                 @Html.ActionLink("Blog - le6perite", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" id="navButtons">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("All Posts", "Index", "Posts")</li>
                     @if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated == true)
@@ -39,7 +39,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Blog by le6perite</p>
+            <p style="color: #542733">&copy; @DateTime.Now.Year - Blog by le6perite</p>
         </footer>
     </div>
 
