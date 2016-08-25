@@ -100,7 +100,6 @@ color: #4287A8;
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
-    top: 0;
     left: 0;
     background-color: #111; /* Black*/
     overflow: hidden; /* Disable horizontal scroll */
@@ -131,6 +130,8 @@ color: #4287A8;
     font-size: 36px;
     margin-left: 50px;
     color: #ffffff;
+    display: inline;
+    padding: 0;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -143,4 +144,8 @@ color: #4287A8;
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+}
+
+.sidenav > h3{
+    margin-top: 0;
 }
