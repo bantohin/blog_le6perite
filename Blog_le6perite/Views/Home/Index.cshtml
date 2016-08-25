@@ -9,7 +9,33 @@
         color: #E8B71A;
     }
 </style>
-<div class="row" id="sidebar" style="text-align: center">
+<script src="~/Scripts/jquery-1.10.2.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function openNav()
+    {
+        $('#button').click(function () {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        })
+    });
+
+
+    $(document).ready(function closeNav() {
+        $('#closeBut').click(function () {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        })
+
+    });
+</script>
+
+<style>
+    a {
+        color: #E8B71A;
+    }
+</style>
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" id="closeBut" onclick="closeNav()">&times;</a>
     <h3>Current Time:</h3>
     @*<embed style="background-color: #542733" src=http://flash-clocks.com/free-flash-clocks-blog-topics/free-flash-clock-161.swf width=200 height=100 wmode=transparent type=application/x-shockwave-flash>*@
     <iframe src="http://free.timeanddate.com/clock/i5c7ud5n/n3443/fn6/fs16/fcf7eac8/tct/pct/ftb/pa8/tt0/tw1/th1/ta1/tb4" frameborder="0" width="213" height="56" allowTransparency="true" id="clock"></iframe>
@@ -20,11 +46,24 @@
         <div><a href="Posts/Details/@post.Id" class="hyperlink"> @post.Title</a></div>
     }
 </div>
-<div id="articles" style="margin-top:15px;">
+
+<!-- Use any element to open the sidenav -->
+<span id="button" onclick="openNav()">open</span>
+@*<div class="row" id="sidebar" style="text-align: center">
+    <h3>Current Time:</h3>
+    <iframe src="http://free.timeanddate.com/clock/i5c7ud5n/n3443/fn6/fs16/fcf7eac8/tct/pct/ftb/pa8/tt0/tw1/th1/ta1/tb4" frameborder="0" width="213" height="56" allowTransparency="true" id="clock"></iframe>
+
+    <h3>Most recent posts:</h3>
+    @foreach (var post in ViewBag.SidebarPosts)
+    {
+        <div><a href="Posts/Details/@post.Id" class="hyperlink"> @post.Title</a></div>
+    }
+</div>*@
+<div id="main" style="margin-top:15px;">
     @foreach (var post in Model)
     {
         <section class="row">
-            <article class="post col-md-8">
+            <article class="post col-md-12">
                 <h2 class="title"><a href="/Posts/Details/@post.Id" class="hyperlink">@post.Title</a></h2>
                 <div class="about">
                     Posted on <i>@post.Date</i>
