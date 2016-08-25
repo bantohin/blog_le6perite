@@ -48,7 +48,8 @@
 </div>
 
 <!-- Use any element to open the sidenav -->
-<span id="button" onclick="openNav()">open</span>
+<br />
+<button class="btn btn-default" id="button" onclick="openNav()">Open sidebar</button>
 @*<div class="row" id="sidebar" style="text-align: center">
     <h3>Current Time:</h3>
     <iframe src="http://free.timeanddate.com/clock/i5c7ud5n/n3443/fn6/fs16/fcf7eac8/tct/pct/ftb/pa8/tt0/tw1/th1/ta1/tb4" frameborder="0" width="213" height="56" allowTransparency="true" id="clock"></iframe>
@@ -72,7 +73,7 @@
                         @: by <i>@post.Author.FullName</i>
                 }
                 </div>
-                <div class="body">@Html.Raw(Utils.CutText(post.Body)) @Html.ActionLink("Read more", $"Details/{post.Id}", "Posts")</div>
+                <div class="body">@Html.Raw(Utils.CutText(post.Body)) @if (post.Body.Length > 400) {@Html.ActionLink("Read more", $"Details/{post.Id}", "Posts")}</div>
             </article>
         </section>
     }
