@@ -17,11 +17,11 @@
 }
 else
 {
-    <dl>
-        <dt>Posts: </dt>
+    <dl> 
+        <dt style="font-size: 1.8em">Your posts on this blog are: </dt>
         @foreach (var post in ViewBag.MyPosts)
         {
-            <dd><a href="../Posts/Details/@post.Id" class="hyperlink"> @post.Title</a></dd>
+            <dd><a href="../Posts/Details/@post.Id" style="text-decoration: none; color: #542733; font-size: 1.2em"> @post.Title</a></dd>
         }
     </dl>
 }
