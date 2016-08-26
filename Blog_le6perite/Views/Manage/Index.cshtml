@@ -11,17 +11,16 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>Password:</dt>
-        <dd>
-            [
+        <dd>            
             @if (Model.HasPassword)
             {
-                @Html.ActionLink("Change your password", "ChangePassword")
+                <a href="/Manage/ChangePassword" class="btn btn-default">Change your password</a>
+                @*@Html.ActionLink("Change your password", "ChangePassword")*@
             }
             else
             {
                 @Html.ActionLink("Create", "SetPassword")
             }
-            ]
         @*</dd>
         <dt>External Logins:</dt>
         <dd>

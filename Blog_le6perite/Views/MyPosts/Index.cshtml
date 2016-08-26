@@ -11,7 +11,9 @@
 <h2>My posts</h2>
 @if(ViewBag.MyPosts == null)
 {
-    <span>You don't have any posts. <a href="../Posts/Create">Create your first one!</a></span>
+    <h3>You don't have any posts.</h3>
+    <br />    
+    <a href="../Posts/Create" class="btn btn-default">Create your first one!</a>
 }
 else
 {
