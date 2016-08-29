@@ -154,7 +154,8 @@
 <p>
     @if (User.IsInRole("Administrators"))
     {
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) @: |
+        <a href="/Posts/Edit/@Model.Id" class="btn btn-default">Edit</a>
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id })*@ 
     }
     <a href="/Posts" class="btn btn-default">Back to posts</a>
     @*@Html.ActionLink("Back to posts", "Index")*@      
