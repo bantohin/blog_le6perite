@@ -101,7 +101,7 @@ color: #4287A8;
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
     left: 0;
-    background-color: #111; /* Black*/
+    background-color: #542733; /* Black*/
     overflow: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -111,14 +111,15 @@ color: #4287A8;
 .sidenav a {
     padding: 8px 8px 8px 8px;
     text-decoration: none;    
-    color: #818181;
+    color: #F7EAC8;
     display: block;
     transition: 0.3s
 }
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
+    color: #542733;
+    background-color: #F7EAC8;
 }
 
 /* Position and style the close button (top right corner) */
@@ -128,7 +129,7 @@ color: #4287A8;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
-    color: #ffffff;
+    color: #F7EAC8;
     display: inline;
     padding: 0;
 }
@@ -147,4 +148,5 @@ color: #4287A8;
 
 .sidenav > h3{
     margin-top: 0;
+    color: #F7EAC8;
 }
