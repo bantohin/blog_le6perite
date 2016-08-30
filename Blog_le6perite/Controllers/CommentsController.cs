@@ -108,10 +108,23 @@ namespace Blog_le6perite.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Comment comment = db.Comments.Find(id);
-            if (comment == null || (comment.Author.UserName != User.Identity.Name && !User.IsInRole("Administrators")))
+            if (comment.AuthorId!=null)
             {
-                return HttpNotFound();
+                if (comment == null || (comment.Author.UserName != User.Identity.Name && !User.IsInRole("Administrators")))
+                {
+                    this.AddNotification("You don't have permission to delete this comment", NotificationType.ERROR);
+                    return RedirectToAction($"../Posts/Details/{comment.PostId}");
+                }
             }
+            else
+            {
+                if (comment == null || !User.IsInRole("Administrators"))
+                {
+                    this.AddNotification("You don't have permission to delete this comment", NotificationType.ERROR);
+                    return RedirectToAction($"../Posts/Details/{comment.PostId}");
+                }
+            }
+            
             return View(comment);
         }
 
