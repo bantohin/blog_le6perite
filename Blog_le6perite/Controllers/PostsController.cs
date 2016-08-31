@@ -19,8 +19,8 @@ namespace Blog_le6perite.Controllers
         // GET: Posts
         public ActionResult Index()
         {
-            var post = db.Posts.Include(p => p.Author).OrderByDescending(p => p.Date).ToList();
-            return View(post);
+            var post = db.Posts.Include(p => p.Author).OrderByDescending(p => p.Date).ToList();          
+            return View(post);            
         }
 
         // GET: Posts/Details/5

@@ -243,3 +243,4 @@ C:\Users\User1\Desktop\le6perite\blog_le6perite\Blog_le6perite\bin\Microsoft.Owi
 C:\Users\User1\Desktop\le6perite\blog_le6perite\Blog_le6perite\obj\Debug\Blog_le6perite.csprojResolveAssemblyReference.cache
 C:\Users\User1\Desktop\le6perite\blog_le6perite\Blog_le6perite\obj\Debug\Blog_le6perite.dll
 C:\Users\User1\Desktop\le6perite\blog_le6perite\Blog_le6perite\obj\Debug\Blog_le6perite.pdb
+D:\Software Technologies May 2016\Проект\blog_le6perite\blog_le6perite\Blog_le6perite\obj\Debug\Blog_le6perite.csprojResolveAssemblyReference.cache
