@@ -38,18 +38,21 @@
             </div>
         </div>
         
-        <div class="form-group">
-            @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select name="Author_Id" class="form-control text-box single-line">
-                    @foreach (var author in ViewBag.Authors)
+        @if (User.IsInRole("Administrators"))
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <select name="Author_Id" class="form-control text-box single-line">
+                        @foreach (var author in ViewBag.Authors)
                     {
-                        <option value="@author.Id">@author.UserName</option>
-                    }
-                </select>
-                @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
+                            <option value="@author.Id">@author.UserName</option>
+                        }
+                    </select>
+                    @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
+        }
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

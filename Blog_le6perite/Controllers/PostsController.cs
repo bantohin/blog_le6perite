@@ -82,7 +82,8 @@ namespace Blog_le6perite.Controllers
 
             if (post == null || (post.Author.UserName != User.Identity.Name && !User.IsInRole("Administrators")))
             {
-                return HttpNotFound();
+                this.AddNotification("You don't have permission to edit this post", NotificationType.ERROR);
+                return RedirectToAction($"../Posts/Details/{post.Id}");
             }
             var authors = db.Users.ToList();
             ViewBag.Authors = authors;
@@ -120,7 +121,8 @@ namespace Blog_le6perite.Controllers
 
             if (post == null || (post.Author.UserName != User.Identity.Name && !User.IsInRole("Administrators")))
             {
-                return HttpNotFound();
+                this.AddNotification("You don't have permission to delete this post", NotificationType.ERROR);
+                return RedirectToAction($"../Posts/Details/{post.Id}");
             }
             return View(post);
         }
