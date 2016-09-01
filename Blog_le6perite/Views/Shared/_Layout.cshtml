@@ -1,18 +1,5 @@
-﻿@*@using Blog_le6perite.Models
-@{
-    var searchedWord = "";
-    searchedWord = Request.Form["searchEngine"];
-    ApplicationDbContext db = new ApplicationDbContext();
-    var posts = db.Posts.Select(p => p).ToList();
-    List<string> postAuthors = new List<string>();
-    List<string> postTitles = new List<string>();
-    var authors = posts.Select(p => p.Author.FullName).ToList();
-    for (int i = 0; i < posts.Count; i++)
-    {
-        postAuthors.Add(authors[i]);
-        postTitles.Add(posts[i].Title.ToString());
-    }
-}*@
+﻿@using Blog_le6perite.Models
+
 
 <!DOCTYPE html>
 <html>
@@ -46,8 +33,8 @@
                     }                   
                     <li>
                         <form method="post">                            
-                                <input type="text" name="searchEngine" style="margin-top: 11px; margin-right: 5px" />
-                                <input type="submit" value="&#x1f50d;" style="margin-top: 11px" />               
+                                <input type="text" placeholder="Search..."  name="searchEngine" style="margin-top: 11px; margin-right: 5px" />
+                                <input type="submit" value="&#x1f50d;" style="margin-top: 11px" formaction="../Search/Index"/>               
                        </form>
                     </li>
                 </ul>
@@ -62,12 +49,9 @@
         <footer>
             <p style="color: #542733">&copy; @DateTime.Now.Year - Blog by le6perite</p>
         </footer>
-    </div>       
-    @*@for (int i = 0; i < posts.Count; i++)
-    {
-        <div>@postAuthors[i]</div>  
-        <div>@postTitles[i]</div>
-    }*@
+    </div>   
+
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

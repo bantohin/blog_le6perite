@@ -1,0 +1,24 @@
+﻿@model Blog_le6perite.Models.Post
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Search results";
+}
+
+<h2>Results</h2>
+
+@if (ViewBag.SearchResults != null)
+{
+    foreach (var searchResult in ViewBag.SearchResults)
+    {
+        <h4><a href="../Posts/Details/@searchResult.Id">@searchResult.Title</a></h4>
+    }
+}
+else
+{
+    <h4>No matching results found.</h4>
+}
+
