@@ -150,3 +150,7 @@ color: #4287A8;
     margin-top: 0;
     color: #F7EAC8;
 }
+
+#myPosts:hover{
+    color: #4287A8;
+}
