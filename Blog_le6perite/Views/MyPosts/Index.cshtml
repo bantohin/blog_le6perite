@@ -17,10 +17,17 @@
 }
 else
 {
-    
-    <h3 style="font-size: 1.8em">Your posts on this blog are: </h3>
-    foreach (var post in ViewBag.MyPosts)
-    {
-        <h3><a href="../Posts/Details/@post.Id" id="myPosts" style="text-decoration: none; color: #DB3340; font-size: 1.2em"> @post.Title</a></h3>
-    }
+    <dl> 
+        <dt style="font-size: 1.8em">Your posts on this blog are: </dt>
+        @foreach (var post in ViewBag.MyPosts)
+        {
+            <dd><a href="../Posts/Details/@post.Id" style="text-decoration: none; color: #542733; font-size: 1.2em"> @post.Title</a></dd>
+        }
+    </dl>
 }
+
+@*@foreach (var post in ViewBag.MyPosts)
+{
+    <p>@post.Title</p>
+}*@
+
