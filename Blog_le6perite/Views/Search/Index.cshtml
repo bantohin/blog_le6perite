@@ -14,7 +14,7 @@
 {
     foreach (var searchResult in ViewBag.SearchResults)
     {
-        <h4><a href="../Posts/Details/@searchResult.Id">@searchResult.Title</a></h4>
+        <h4><a href="../Posts/Details/@searchResult.Id">@searchResult.Title</a> by @searchResult.Author.FullName</h4>
     }
 }
 else
